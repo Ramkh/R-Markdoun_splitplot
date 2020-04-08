@@ -1,0 +1,25 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
+```{r}
+sp.oats<-read.table(file = "clipboard", sep = "\t", header=TRUE)
+sp.oats
+attach(sp.oats)
+str(sp.oats)
+#View(Oats.dat)
+```
+```{r}
+model<-with(sp.oats, ssp.plot(Year, Rep, Variety, Method, GY_t_ha))
+gla<-model$gl.a
+glb<-model$gl.b
+glc<-model$gl.c
+Ea<-model$Ea
+Eb<-model$Eb
+Ec<-model$Ec
+out1<-with(sp.oats, LSD.test(GY_t_ha, Variety, glb, Eb, console = TRUE))
+out2<-with(sp.oats, LSD.test(GY_t_ha, Method, glc, Ec, console=TRUE))
+out3<-with(sp.oats, LSD.test(GY_t_ha, Method:Variety, glc, Ec, console = TRUE))
+kable(out3[12:3, ], format = "html")
+````

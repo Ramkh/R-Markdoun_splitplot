@@ -1,0 +1,234 @@
+
+```{r}
+sp.oats<-read.table(file = "clipboard", sep = "\t", header=TRUE)
+sp.oats
+attach(sp.oats)
+str(sp.oats)
+#View(Oats.dat)
+
+```{r}
+sp.oats$arc.NB_incidence.1<- asin(sp.oats$NB_incidence.1)
+sp.oats$arc.NB_incidence.1<- asin(sp.oats$FB_INCIDENCE.1)
+sp.oats$sqrt.FB_INCIDENCE.1<- sqrt(sp.oats$FB_INCIDENCE)
+sp.oats$arc.FB_INCIDENCE.1<- asin(sp.oats$FB_INCIDENCE.1)
+str(sp.oats)
+hist(NB_incidence.1)
+hist(sp.oats$arc.NB_incidence.1)
+hist(FB_INCIDENCE)
+hist(sp.oats$sqrt.FB_INCIDENCE.1)
+hist(sp.oats$arc.FB_INCIDENCE.1)
+attach (sp.oats)
+```
+
+
+
+
+```{r}
+library(agricolae)
+model1<-with(sp.oats, ssp.plot(Year, Rep, Variety, Method, GY_t_ha))
+gla<-model1$gl.a
+glb<-model1$gl.b
+glc<-model1$gl.c
+Ea<-model1$Ea
+Eb<-model1$Eb
+Ec<-model1$Ec
+out1<-with(sp.oats, LSD.test(GY_t_ha, Variety, glb, Eb, console = TRUE))
+out2<-with(sp.oats, LSD.test(GY_t_ha, Method, glc, Ec, console=TRUE))
+out3<-with(sp.oats, LSD.test(GY_t_ha, Method:Variety, glc, Ec, console = TRUE))
+kable(out3[12:3, ], format = "html")
+````
+
+
+```{r}
+library(agricolae)
+model<-with(sp.oats, ssp.plot(Year, Rep, Variety, Method, DTH))
+gla<-model$gl.a
+glb<-model$gl.b
+glc<-model$gl.c
+Ea<-model$Ea
+Eb<-model$Eb
+Ec<-model$Ec
+out1<-with(sp.oats, LSD.test(DTH, Variety, glb, Eb, console = TRUE))
+out2<-with(sp.oats, LSD.test(DTH, Method, glc, Ec, console=TRUE))
+out3<-with(sp.oats, LSD.test(DTH, Method:Variety, glc, Ec, console = TRUE))
+kable(out3[12:3, ], format = "html")
+````
+
+```{r}
+library(agricolae)
+model<-with(sp.oats, ssp.plot(Year, Rep, Variety, Method, DTM))
+gla<-model$gl.a
+glb<-model$gl.b
+glc<-model$gl.c
+Ea<-model$Ea
+Eb<-model$Eb
+Ec<-model$Ec
+out1<-with(sp.oats, LSD.test(DTM, Variety, glb, Eb, console = TRUE))
+out2<-with(sp.oats, LSD.test(DTM, Method, glc, Ec, console=TRUE))
+out3<-with(sp.oats, LSD.test(DTM, Method:Variety, glc, Ec, console = TRUE))
+kable(out3[12:3, ], format = "html")
+````
+
+
+```{r}
+library(agricolae)
+model<-with(sp.oats, ssp.plot(Year, Rep, Variety, Method, BH_m2 ))
+gla<-model$gl.a
+glb<-model$gl.b
+glc<-model$gl.c
+Ea<-model$Ea
+Eb<-model$Eb
+Ec<-model$Ec
+out1<-with(sp.oats, LSD.test(BH_m2 , Variety, glb, Eb, console = TRUE))
+out2<-with(sp.oats, LSD.test(BH_m2 , Method, glc, Ec, console=TRUE))
+out3<-with(sp.oats, LSD.test(BH_m2 , Method:Variety, glc, Ec, console = TRUE))
+kable(out3[12:3, ], format = "html")
+````
+
+```{r}
+library(agricolae)
+model<-with(sp.oats, ssp.plot(Year, Rep, Variety, Method, NF_head))
+gla<-model$gl.a
+glb<-model$gl.b
+glc<-model$gl.c
+Ea<-model$Ea
+Eb<-model$Eb
+Ec<-model$Ec
+out1<-with(sp.oats, LSD.test(NF_head, Variety, glb, Eb, console = TRUE))
+out2<-with(sp.oats, LSD.test(NF_head, Method, glc, Ec, console=TRUE))
+out3<-with(sp.oats, LSD.test(NF_head, Method:Variety, glc, Ec, console = TRUE))
+kable(out3[12:3, ], format = "html")
+````
+```{r}
+library(agricolae)
+model<-with(sp.oats, ssp.plot(Year, Rep, Variety, Method, PH))
+gla<-model$gl.a
+glb<-model$gl.b
+glc<-model$gl.c
+Ea<-model$Ea
+Eb<-model$Eb
+Ec<-model$Ec
+out1<-with(sp.oats, LSD.test(PH, Variety, glb, Eb, console = TRUE))
+out2<-with(sp.oats, LSD.test(PH, Method, glc, Ec, console=TRUE))
+out3<-with(sp.oats, LSD.test(PH, Method:Variety, glc, Ec, console = TRUE))
+kable(out3[12:3, ], format = "html")
+````
+
+```{r}
+library(agricolae)
+model<-with(sp.oats, ssp.plot(Year, Rep, Variety, Method, Tiller_HILL))
+gla<-model$gl.a
+glb<-model$gl.b
+glc<-model$gl.c
+Ea<-model$Ea
+Eb<-model$Eb
+Ec<-model$Ec
+out1<-with(sp.oats, LSD.test(Tiller_HILL, Variety, glb, Eb, console = TRUE))
+out2<-with(sp.oats, LSD.test(Tiller_HILL, Method, glc, Ec, console=TRUE))
+out3<-with(sp.oats, LSD.test(Tiller_HILL, Method:Variety, glc, Ec, console = TRUE))
+kable(out3[12:3, ], format = "html")
+````
+
+```{r}
+library(agricolae)
+model<-with(sp.oats, ssp.plot(Year, Rep, Variety, Method, Weigh.head))
+gla<-model$gl.a
+glb<-model$gl.b
+glc<-model$gl.c
+Ea<-model$Ea
+Eb<-model$Eb
+Ec<-model$Ec
+out1<-with(sp.oats, LSD.test(Weigh.head  , Variety, glb, Eb, console = TRUE))
+out2<-with(sp.oats, LSD.test(Weigh.head  , Method, glc, Ec, console=TRUE))
+out3<-with(sp.oats, LSD.test(Weigh.head  , Method:Variety, glc, Ec, console = TRUE))
+kable(out3[12:3, ], format = "html")
+````
+
+
+```{r}
+library(agricolae)
+model<-with(sp.oats, ssp.plot(Year, Rep, Variety, Method, GY_t_ha))
+gla<-model$gl.a
+glb<-model$gl.b
+glc<-model$gl.c
+Ea<-model$Ea
+Eb<-model$Eb
+Ec<-model$Ec
+out1<-with(sp.oats, LSD.test(GY_t_ha, Variety, glb, Eb, console = TRUE))
+out2<-with(sp.oats, LSD.test(GY_t_ha, Method, glc, Ec, console=TRUE))
+out3<-with(sp.oats, LSD.test(GY_t_ha, Method:Variety, glc, Ec, console = TRUE))
+kable(out3[12:3, ], format = "html")
+````
+
+
+```{r}
+library(agricolae)
+model<-with(sp.oats, ssp.plot(Year, Rep, Variety, Method, SY_t_ha ))
+gla<-model$gl.a
+glb<-model$gl.b
+glc<-model$gl.c
+Ea<-model$Ea
+Eb<-model$Eb
+Ec<-model$Ec
+out1<-with(sp.oats, LSD.test(SY_t_ha , Variety, glb, Eb, console = TRUE))
+out2<-with(sp.oats, LSD.test(SY_t_ha , Method, glc, Ec, console=TRUE))
+out3<-with(sp.oats, LSD.test(SY_t_ha , Method:Variety, glc, Ec, console = TRUE))
+kable(out3[12:3, ], format = "html")
+````
+
+```{r}
+library(agricolae)
+model<-with(sp.oats, ssp.plot(Year, Rep, Variety, Method,  X500gw))
+gla<-model$gl.a
+glb<-model$gl.b
+glc<-model$gl.c
+Ea<-model$Ea
+Eb<-model$Eb
+Ec<-model$Ec
+out1<-with(sp.oats, LSD.test( X500gw, Variety, glb, Eb, console = TRUE))
+out2<-with(sp.oats, LSD.test( X500gw, Method, glc, Ec, console=TRUE))
+out3<-with(sp.oats, LSD.test( X500gw, Method:Variety, glc, Ec, console = TRUE))
+kable(out3[12:3, ], format = "html")
+````
+
+```{r}
+library(agricolae)
+model<-with(sp.oats, ssp.plot(Year, Rep, Variety, Method, LB_AUDPC))
+gla<-model$gl.a
+glb<-model$gl.b
+glc<-model$gl.c
+Ea<-model$Ea
+Eb<-model$Eb
+Ec<-model$Ec
+out1<-with(sp.oats, LSD.test(LB_AUDPC, Variety, glb, Eb, console = TRUE))
+out2<-with(sp.oats, LSD.test(LB_AUDPC, Method, glc, Ec, console=TRUE))
+out3<-with(sp.oats, LSD.test(LB_AUDPC, Method:Variety, glc, Ec, console = TRUE))
+kable(out3[12:3, ], format = "html")
+
+
+```{r}
+model<-with(sp.oats, ssp.plot(Year, Rep, Variety, Method, arc.NB_incidence.1))
+gla<-model$gl.a
+glb<-model$gl.b
+glc<-model$gl.c
+Ea<-model$Ea
+Eb<-model$Eb
+Ec<-model$Ec
+out1<-with(sp.oats, LSD.test(arc.NB_incidence.1, Variety, glb, Eb, console = TRUE))
+out2<-with(sp.oats, LSD.test(arc.NB_incidence.1, Method, glc, Ec, console=TRUE))
+out3<-with(sp.oats, LSD.test(arc.NB_incidence.1, Method:Variety, glc, Ec, console = TRUE))
+kable(out3[12:3, ], format = "html")
+````
+```{r}
+model<-with(sp.oats, ssp.plot(Year, Rep, Variety, Method, sp.oats$sqrt.FB_INCIDENCE.1))
+gla<-model$gl.a
+glb<-model$gl.b
+glc<-model$gl.c
+Ea<-model$Ea
+Eb<-model$Eb
+Ec<-model$Ec
+out1<-with(sp.oats, LSD.test(sp.oats$sqrt.FB_INCIDENCE.1, Variety, glb, Eb, console = TRUE))
+out2<-with(sp.oats, LSD.test(sp.oats$sqrt.FB_INCIDENCE.1, Method, glc, Ec, console=TRUE))
+out3<-with(sp.oats, LSD.test(sp.oats$sqrt.FB_INCIDENCE.1, Method:Variety, glc, Ec, console = TRUE))
+kable(out3[12:3, ], format = "html")
+````
